@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .content {
+            margin-top: 50px;
+            width: 1080px;
+            height: 500px;
+            background: linear-gradient(to right, pink, skyblue);
+            margin: 0 auto;
+
+        }
+
+        .content-ceng {
+            width: 100%;
+            height: 30px;
+        }
+        p{
+            width: 20%;
+            height: 100%;
+            background: linear-gradient(to left,white,black);
+            float: left;
+            color: skyblue;
+        }
+    </style>
+    <script>
+    window.onload = function(){
+        var jb = {
+             "aa" : ["李胜利","郑俊英","崔钟勋","李宗泫","李文浩"],
+             "cc" : [["img/li.jpg"],["img/ying.jpg"],["img/xuan.jpg"],["img/xuan1.jpg"],["img/link.jpg"]]
+        }
+        var ids = document.getElementById("c")
+        var cls = ids.getElementsByTagName("p")
+        var imgs = ids.getElementsByTagName("img")
+        for(var i = 0;i<cls.length;i++){
+            cls[i].index = i;
+            cls[i].innerHTML = jb.aa[i]
+            for(var j = 0;j<imgs.length;j++){
+                imgs[j].src = jb.cc[0]
+            }
+            cls[i].onclick = function(){
+                for(var z = 0; z<cls.length;z++){
+                    cls[z].className = ""
+                }
+                
+                for(var j = 0;j<imgs.length;j++){
+                imgs[j].src = jb.cc[this.index][j]
+            }
+            }
+            this.index = "a"
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div class="content" id="c">
+        <div class="content-ceng">
+            <p class="a"></p>
+            <p class=""></p>
+            <p class=""></p>
+            <p class=""></p>
+            <p></p>
+        </div>
+        <span></span>
+        <!-- <span></span>
+                <span></span> -->
+        <a><img></a>
+    </div>
+</body>
+
+</html>
