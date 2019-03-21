@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .tab-item{
+            background: lightgoldenrodyellow;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        .active-tab span{
+            display: none;
+        }
+        .tab a{
+            text-decoration: none;
+            display: inline-block;
+            width: 100px; height: 60px;
+            text-align: center; line-height: 60px;
+            background: bisque; border-radius: 4px;
+        }
+
+        .active{
+            background: orange !important;
+        }
+
+        .hide{
+            display: none !important;
+        }
+        .show{
+            display: inline-block !important;
+        }
+
+        .active-tab span{
+            display: none;
+            width: 100px; height: 60px; background: greenyellow;
+            line-height: 60px; text-align: center;
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+<!-- 激活的标签 - 开始 -->
+<div class="active-tab">
+    <span>男</span>
+    <span>女</span>
+    <span>人妖</span>
+</div>
+<!-- 激活的标签 - 结束 -->
+
+<!-- 筛选项 - 开始 -->
+<div class="tab">
+    <a href="javascript:;">男</a>
+    <a href="javascript:;">女</a>
+    <a href="javascript:;">人妖</a>
+</div>
+<!-- 筛选项 - 结束-->
+
+<div class="tab-show">
+    <div class="tab-item">
+        <p>名字：</p>
+        <p>年龄：</p>
+        <p>性别：</p>
+        <p>个人简介：</p>
+    </div>
+</div>
+
+<script src="shaixuan.js"></script>
+<script></script>
+</body>
+</html>
