@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .box {
+            width: 400px;
+            height: 300px;
+            border: 1px solid red;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hd {
+            height: 45px;
+            border-bottom: 1px solid red;
+        }
+
+        .hd span {
+            display: inline-block;
+            width: 95px;
+            border-right: 1px solid red;
+            line-height: 45px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .hd span:last-child {
+            display: inline-block;
+            width: 96px;
+            line-height: 45px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .bd li {
+            height: 255px;
+            display: none;
+        }
+
+        .bd li.current {
+            display: block;
+        }
+
+        #head {
+            position: absolute;
+            width: 400px;
+            height: 45px;
+            border: 1px solid red;
+            top: 50px;
+            left: 301px;
+        }
+
+        #lis1 {
+            width: 400px;
+            height: 50px;
+            margin: 0 auto;
+
+        }
+
+        #lis1 li {
+            list-style: none;
+            line-height: 60px;
+            width: 400px;
+            ;
+            border: 1px solid red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="head">
+
+    </div>
+    <div class="box" id="box">
+        <div class="hd">
+            <span class="current">男</span>
+            <span>女</span>
+            <span>人妖</span>
+        </div>
+        
+            <ul id="lis1">
+                  <li>ss</li>
+                  <li>s</li>
+                  <li>ss</li>
+
+            </ul>
+      
+    </div>
+
+    <script>
+        var menu_data = [{
+                "name": "adc",
+                "sex": "男",
+
+                "age": "20",
+                "hobby": "吃吃吃"
+            },
+            {
+                "name": "assc",
+                "sex": "女",
+
+                "age": "20",
+                "hobby": "吃吃吃"
+            },
+            {
+                "name": "asas",
+                "sex": "女",
+
+                "age": "20",
+                "hobby": "吃吃吃"
+            },
+            {
+                "name": "adcsss",
+                "sex": "男",
+
+                "age": "20",
+                "hobby": "吃吃吃"
+            },
+            {
+                "name": "adcssa",
+                "sex": "女",
+
+                "age": "20",
+                "hobby": "吃吃吃"
+            },
+            {
+                "name": "ccx",
+                "sex": "女",
+
+                "age": "20",
+                "hobby": "吃吃吃"
+            },
+            {
+                "name": "ass",
+                "sex": "人妖",
+
+                "age": "20",
+                "hobby": "吃吃吃"
+            },
+            {
+                "name": "ass44",
+                "sex": "人妖",
+
+                "age": "20",
+                "hobby": "吃吃吃"
+            },
+            {
+                "name": "ass11",
+                "sex": "人妖",
+
+                "age": "20",
+                "hobby": "吃吃吃"
+            },
+        ];
+
+        var box = document.getElementById("box");
+        var s = box.getElementsByTagName("span");
+        var li = box.getElementsByTagName("li");
+        var lis1 = document.getElementById("lis1");
+
+        //筛选level=1的对象
+        var menu_node1 = menu_data.filter(function (e) {
+            return e.parent == "男";
+        });
+        var menu_node2 = menu_data.filter(function (e) {
+            return e.parent == "女";
+        });
+        var menu_node3 = menu_data.filter(function (e) {
+            return e.parent == "人妖";
+        });
+    </script>
+
+
+</body>
+
+</html>
