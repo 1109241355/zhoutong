@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @import"css/public/all.css";
+
+        .tab-item {
+            background: lawngreen;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        .tab a {
+            display: inline-block;
+            width: 100px;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            background: skyblue;
+        }
+
+        .tab_list {
+            background: silver;
+        }
+
+        .active-tab span {
+            display: none;
+        }
+
+        .tab a {
+            display: inline-block;
+            width: 100px;
+            height: 60;
+            text-align: center;
+            line-height: 60px;
+            background: salmon;
+        }
+    </style>
+    <script>
+        var pArr = [{
+                name: "ccc",
+                sex: "女",
+
+                age: "20",
+                hobby: "吃"
+            },
+            {
+                name: "ccc",
+                sex: "女",
+
+                age: "20",
+                hobby: "吃"
+            },
+            {
+                name: "ccc",
+                sex: "女",
+
+                age: "20",
+                hobby: "吃"
+            },
+            {
+                name: "ccc",
+                sex: "女",
+
+                age: "20",
+                hobby: "吃"
+            },
+        ]
+
+        // var html = "";
+        // for (var i = 0; i < pArr.length; i++) {
+        //     html += '<div class="list_item">' +
+        //         '<p>名字:' + pArr[i].name + '</p>' +
+        //         '<p>性别:' + pArr[i].sex + '</p>' +
+        //         '<p>年龄:' + pArr[i].age + '</p>' +
+        //         '<p>爱好:' + pArr[i].hobby + '</p>' +
+        //         '</div>';
+
+        // }
+        // document.getElementById("tab_list").innerHTML = html;
+        // var tabs = document.getElementsByClassName("tab")[0].children;
+
+        // for (let i = 0; i < tabs.length; i++) {
+        //     tabs[i].onclick = function () {
+        //         html = "";
+        //         for (var i = 0; i < pArr.length; i++) {
+        //             if (this.innerText == pArr[i].sex) {
+        //                 html += '<div class="list_item">' +
+        //                     '<p>名字:' + pArr[i].name + '</p>' +
+        //                     '<p>性别:' + pArr[i].sex + '</p>' +
+        //                     '<p>年龄:' + pArr[i].age + '</p>' +
+        //                     '<p>爱好:' + pArr[i].hobby + '</p>' +
+        //                     '</div>';
+        //             }
+        //         }
+        //         document.getElementById("list").innerHTML = html;
+        //     }
+        // }
+        showList(["男", "女", "人妖"]);
+        //创建容纳激活标签的数组
+        var activeArr = [];
+        var aBtn = document.querySelectorAll(".tab a");
+        var activeBtns = document.querySelectorAll(".active_tab span"); //激活选项按钮
+        //添加事件
+
+        for (var i = 0; i < aBtn.length; i++) {
+            aBtns[i].addEventListener("click", function (event) {
+                //点击的筛选项的值 
+                var t = this.innerText;
+                var tIndex = activeArr.indexOf(t);
+                if (tIndex !== -1) { //激活标签数组中已经有了当前要添加的值
+                    activeArr.splice(tIndex, 1);
+                } else {
+                    activeArr.push(t);
+                }
+                showList(activeArr);
+            }, false);
+
+        }
+
+        function showList(targetArr) {
+            //已经筛选出来的html内容
+            var html = "";
+            targetArr.forEach(function (item, index) {
+                pArr.forEach(function (pObj, pIndex) {
+                    if (item == pObj.sex) {
+                        //匹配到了激活标签对应的对象
+                        html += "<div class='tab_item'>" +
+                            "<p>名字:" + pObj.name + "</p>" +
+                            "<p>性别:" + pObj.sex + "</p>" +
+                            "<p>年龄:" + pObj.age + "</p>" +
+                            "<p>爱好:" + pObj.hobby + "</p>" +
+                            "</div>"
+                    }
+                });
+            });
+            document.querySelector(".tab_show").innerHTML = html;
+        }
+    </script>
+</head>
+
+<body>
+    <!--已选标签容器-开始-->
+
+    <div class="active_tab">
+        <span>男</span>
+        <span>女</span>
+        <span>人妖</span>
+    </div>
+    <div class="tab">
+        <a href="javascript:;">男</a>
+        <a href="javascript:;">女</a>
+        <a href="javascript:;">人妖</a>
+    </div>
+    <div class="tab_show">
+        <div class="tab_item">
+           
+        </div>
+    </div>
+
+</body>
+
+</html>

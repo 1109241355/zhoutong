@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onscroll = debounce(function (event) {
+            console.log(event);
+        }, 1000);
+
+
+        //节流
+        //    function throtlle(fn,time){
+        //        var beforeTime=0;
+        //        return function(){
+        //            var self=this;
+        //            var args=arguments;
+        //            var currTime=+new Date();//获取当前时间 时间戳
+        //            if(currTime-beforeTime>=time){//判断条件,如果间隔大于或等于设定的时间,执行以下代码
+        //                fn.apply(self,args);//self返回该函数
+        //                beforeTime=currTime;//把当前值赋值给beforetime用来下一次函数执行
+        //            }
+        //        }
+        //    }
+        //去抖
+        function debounce(fn,time) {
+            //保存的数据
+            var timer = null;
+            return function () {
+                var self = this; //指向该函数
+                var args = arguments; //指向一个参数类数组
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    fn.apply(self,args);
+                }, time)
+            }
+
+        }
+    </script>
+    <style>
+        .box {
+            height: 4000px;
+            width: 200px;
+            background: salmon;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>
