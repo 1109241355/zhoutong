@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>无缝轮播图</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .box {
+        width: 520px;
+        height: 280px;
+        margin: 0 auto;
+        position: relative;
+        font-size: 18px;
+        /* overflow: hidden; */
+      }
+      .steam {
+        width: 520px;
+        height: 280px;
+        overflow: hidden;
+        position: relative;
+      }
+      .item {
+        width: 3640px;
+        height: 280px;
+        position: absolute;
+      }
+
+      .item li {
+        float: left;
+        list-style: none;
+      }
+
+      .item li img {
+        vertical-align: top;
+      }
+
+      .lefts {
+        width: 30px;
+        height: 50px;
+        margin-top: -25px;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        background: rgba(0, 0, 0, 0.6);
+        text-align: center;
+        line-height: 50px;
+        color: #ffffff;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .rights {
+        width: 30px;
+        height: 50px;
+        margin-top: -25px;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        background: rgba(0, 0, 0, 0.6);
+        text-align: center;
+        line-height: 50px;
+        color: #ffffff;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .title {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        margin-left: -30px;
+        cursor: pointer;
+      }
+
+      .title .act {
+        background: #ff5000;
+      }
+
+      .title span {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #ffffff;
+        cursor: pointer;
+      }
+
+      .min {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box" class="box">
+      <div class="steam">
+        <ul id="item" class="item">
+          <li><img src="../img/1.webp" alt="" /></li>
+          <li><img src="../img/2.jpg" alt="" /></li>
+          <li><img src="../img/3.jpg" alt="" /></li>
+          <li><img src="../img/4.jpg" alt="" /></li>
+          <li><img src="../img/5.webp" alt="" /></li>
+          <li><img src="../img/1.webp" alt="" /></li>
+        </ul>
+        <div id="lefts" class="lefts min">＜</div>
+        <div id="rights" class="rights min">＞</div>
+        <div class="title">
+          <span class="act"></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  
+    var box = document.getElementById("box"); 
+    var steam = document.getElementsByClassName("steam")[0]; 
+    var item = document.getElementById("item"); 
+    var title = document.getElementsByTagName("title")[0];
+    var lefts = document.getElementById("lefts"); 
+    var right = document.getElementById("rights"); 
+    var itemLi = document.querySelectorAll(".item li");
+    var titleSpan = document.querySelectorAll(".title span");
+
+
+    
+    var index = 0; 
+
+    var time = setInterval(sull, 2000);
+
+   
+ 
+    box.onmouseover = function() {
+
+      lefts.classList.remove("min");
+      right.classList.remove("min");
+
+      clearInterval(time);
+    };
+ 
+    box.onmouseout = function() {
+ 
+      lefts.classList.add("min");
+      right.classList.add("min");
+  
+      time = setInterval(sull, 2000);
+    };
+
+
+    right.onclick = function() {
+      sull();
+    };
+ 
+    function sull() {
+      if (index == itemLi.length - 1) {
+        index = 0;
+        item.style.left = 0 + "px";
+      }
+      index++;
+      console.log(-index * steam.offsetWidth);
+      anim(item, -index * steam.offsetWidth, 10);
+      inshow();
+    }
+ 
+    lefts.onclick = function() {
+    
+      if (index == 0) {
+
+        index = itemLi.length - 1; 
+        item.style.left = -index * steam.offsetWidth + "px";
+      }
+      index--;
+    
+      anim(item, -index * steam.offsetWidth, 10);
+      inshow();
+    };
+
+    function inshow() {
+      console.log(titleSpan.length);
+      for (var i = 0; i < titleSpan.length; i++) {
+        if (i == index) {
+          titleSpan[i].classList.add("act");
+        } else {
+          titleSpan[i].classList.remove("act");
+        }
+        if (index == titleSpan.length) {
+          titleSpan[0].classList.add("act");
+        }
+      }
+    }
+
+
+    for (let i = 0; i < titleSpan.length; i++) {
+      titleSpan[i].onclick = function() {
+        index = i ;
+        item.style.left = -index * steam.offsetWidth + "px";
+        inshow();
+      };
+    }
+
+
+    function anim(obj, target, speed) {
+      clearInterval(obj.set);
+      obj.set = setInterval(function() {
+        var currentLeft = obj.offsetLeft; 
+        console.log(obj.offsetLeft)
+        if (currentLeft > target) {
+          currentLeft -= 10;
+          obj.style.left = currentLeft + "px";
+        } else if (currentLeft < target) {
+          currentLeft += 10;
+          obj.style.left = currentLeft + "px";
+        } else {
+          clearInterval(obj.set);
+          obj.style.left = target + "px";
+        }
+      }, speed);
+    }
+    // };
+  </script>
+</html>
