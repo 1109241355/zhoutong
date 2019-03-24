@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>无缝轮播图</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .wrap {
+        width: 520px;
+        height: 280px;
+        margin: 0 auto;
+        position: relative;
+        font-size: 18px;
+        /* overflow: hidden; */
+      }
+      .screen {
+        width: 520px;
+        height: 280px;
+        overflow: hidden;
+        position: relative;
+      }
+      .item {
+        width: 3640px;
+        height: 280px;
+        position: absolute;
+      }
+
+      .item li {
+        float: left;
+        list-style: none;
+      }
+
+      .item li img {
+        vertical-align: top;
+      }
+
+      .item-left {
+        width: 30px;
+        height: 50px;
+        margin-top: -25px;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        background: rgba(0, 0, 0, 0.6);
+        text-align: center;
+        line-height: 50px;
+        color: #ffffff;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .item-right {
+        width: 30px;
+        height: 50px;
+        margin-top: -25px;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        background: rgba(0, 0, 0, 0.6);
+        text-align: center;
+        line-height: 50px;
+        color: #ffffff;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .title {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        margin-left: -30px;
+        cursor: pointer;
+      }
+
+      .title .act {
+        background: #ff5000;
+      }
+
+      .title span {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #ffffff;
+        cursor: pointer;
+      }
+
+      .min {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap" class="wrap">
+      <div class="screen">
+        <ul id="item" class="item">
+          <li><img src="../img/1.webp" alt="" /></li>
+          <li><img src="../img/2.jpg" alt="" /></li>
+          <li><img src="../img/3.jpg" alt="" /></li>
+          <li><img src="../img/4.jpg" alt="" /></li>
+          <li><img src="../img/5.webp" alt="" /></li>
+          <li><img src="../img/1.webp" alt="" /></li>
+        </ul>
+        <div id="item-left" class="item-left min">＜</div>
+        <div id="item-right" class="item-right min">＞</div>
+        <div class="title">
+          <span class="act"></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    // window.onload = function() {
+    // 获取页面对应的元素
+    var wrap = document.getElementById("wrap"); //最外部大盒子
+    var screen = document.getElementsByClassName("screen")[0]; //轮播图显示区域div
+    var item = document.getElementById("item"); //显示图片的ul
+    var title = document.getElementsByTagName("title")[0]; //显示页码的
+    var lefts = document.getElementById("item-left"); //上一张箭头
+    var right = document.getElementById("item-right"); //下一张箭头
+    var itemLi = document.querySelectorAll(".item li");//li标签
+    var titleSpan = document.querySelectorAll(".title span");//span标签
+
+
+    
+    var index = 0; //声明一个变量记录图片的索引，默认第0张图片
+
+    var time = setInterval(sull, 2000);
+
+    // 给wrap添加鼠标移入和移出事件
+    // 移入
+    wrap.onmouseover = function() {
+      //显示箭头
+      lefts.classList.remove("min");
+      right.classList.remove("min");
+      // 关闭定时器
+      clearInterval(time);
+    };
+    // 移出
+    wrap.onmouseout = function() {
+      //隐藏箭头
+      lefts.classList.add("min");
+      right.classList.add("min");
+      //开启定时器
+      time = setInterval(sull, 2000);
+    };
+
+    // 点击事件
+    //下一页事件
+    right.onclick = function() {
+      sull();
+    };
+    //封装右点击事件
+    function sull() {
+      if (index == itemLi.length - 1) {
+        index = 0; //index恢复到0
+        item.style.left = 0 + "px"; //ul回到初始位置
+      }
+      index++;
+      console.log(-index * screen.offsetWidth);
+      anim(item, -index * screen.offsetWidth, 10);
+      inshow();
+    }
+    // console.log(index);
+    lefts.onclick = function() {
+      //如果当前是第一张，则偷偷修改ul的位置是最后一张(第一张与最后一张是同一张图片)
+      if (index == 0) {
+        //index等于最后的索引
+        index = itemLi.length - 1; //获得li的长度
+        item.style.left = -index * screen.offsetWidth + "px"; //回到最后一张位置
+      }
+      index--;
+    
+      anim(item, -index * screen.offsetWidth, 10);
+      inshow();
+    };
+    // 页码滚动
+    function inshow() {
+      console.log(titleSpan.length);
+      for (var i = 0; i < titleSpan.length; i++) {
+        if (i == index) {
+          titleSpan[i].classList.add("act");
+        } else {
+          titleSpan[i].classList.remove("act");
+        }
+        if (index == titleSpan.length) {
+          titleSpan[0].classList.add("act");
+        }
+      }
+    }
+
+    //给页码添加点击事件
+    for (let i = 0; i < titleSpan.length; i++) {
+      titleSpan[i].onclick = function() {
+        index = i ;
+        item.style.left = -index * screen.offsetWidth + "px";
+        inshow();
+      };
+    }
+
+    //封装一个滚动动画函数
+    function anim(obj, target, speed) {
+      clearInterval(obj.set);
+      obj.set = setInterval(function() {
+        var currentLeft = obj.offsetLeft; //获取当前位置
+        console.log(obj.offsetLeft)
+        if (currentLeft > target) {
+          currentLeft -= 10;
+          obj.style.left = currentLeft + "px";
+        } else if (currentLeft < target) {
+          currentLeft += 10;
+          obj.style.left = currentLeft + "px";
+        } else {
+          clearInterval(obj.set);
+          obj.style.left = target + "px";
+        }
+      }, speed);
+    }
+    // };
+  </script>
+</html>
