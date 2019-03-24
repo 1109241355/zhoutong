@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  /*
+
+  第一步：设置外部框的样式
+  第二步: 设置图片框的样式
+  第三步: 设置箭头的样式
+  第四步: 设置小圆点的样式
+*/
+  #container {
+    margin: 50px auto;
+    position: relative;
+    width: 520px;
+    height: 280px;
+    overflow: hidden;
+  }
+
+  #list {
+    position: absolute;
+    z-index: 1;
+    width: 3640px;
+  }
+
+  #list img {
+    float: left;
+    width: 520px;
+    height: 280px;
+  }
+
+  #buttons {
+    height: 10px;
+    width: 100px;
+    position: absolute;
+    left: 0;
+    /*设置水平垂直居中*/
+    right: 0;
+    /*设置水平垂直居中*/
+    margin: 0 auto;
+    /*设置水平垂直居中*/
+    bottom: 20px;
+    z-index: 2;
+  }
+
+  #buttons span {
+    float: left;
+    margin-right: 5px;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 50%;
+    background: #333;
+    cursor: pointer;
+  }
+
+  #buttons .on {
+    background: orangered;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 40px;
+    display: none;
+    position: absolute;
+    top: 0;
+    /*设置水平垂直居中*/
+    bottom: 0;
+    /*设置水平垂直居中*/
+    margin: auto 0;
+    /*设置水平垂直居中*/
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 39px;
+    text-align: center;
+    color: #fff;
+    background-color: RGBA(0, 0, 0, .3);
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .arrow:hover {
+    background-color: RGBA(0, 0, 0, .7);
+  }
+
+  #container:hover .arrow {
+    display: block;
+  }
+
+  #prev {
+    left: 10px;
+  }
+
+  #next {
+    right: 10px;
+  }
+</style>
+
+<body>
+  <div id="container" class="clearFix">
+    <p id="list" class="clearFix" style="left: -520px">
+      <img src="img/taobao/t5.jpg" alt="" />
+      <img src="img/taobao/t1.jpg" alt="" />
+      <img src="img/taobao/t2.jpg" alt="" />
+      <img src="img/taobao/t3.webp" alt="" />
+      <img src="img/taobao/t4.webp" alt="" />
+      <img src="img/taobao/t5.jpg" alt="" />
+      <img src="img/taobao/t1.jpg" alt="" />
+    </p>
+    <p id="buttons" class="clearFix">
+      <span class="on"></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </p>
+    <a href="javascript:;" rel="external nofollow" rel="external nofollow" id="prev" class="arrow">
+      <</a> <a href="javascript:;" rel="external nofollow" rel="external nofollow" id="next" class="arrow">>
+    </a>
+  </div>
+  <script>
+    /**
+     * reated by zhm on 17.1.15.
+     */
+    /*
+     *知识点：
+     *  this使用
+     *  DOM事件
+     *  定时器
+     *
+     *  思路：
+     *  （1）设置它左右移动
+     *    问题：传入数字为NAN??
+     *    解决：在页面中增加属性style：left:0
+     *  （2）平滑移动（移动时间固定，每次移动的距离不一样）
+     *    问题：连续点击出现晃动？---设置标志位
+     *       出现空白页？？--- 第一张图片前加上最后一张，最后一张图片前加上第一张
+     *               在类list的标签中增加属性style：left:-520px;
+     *              设置无限滚动判断
+     *
+     *  （3）设置小圆点
+     *    首先将所有的类置为空，当前类置为on
+     *    绑定小圆点和图片
+     *    绑定小圆点和左右箭头
+     *    设置定时器，鼠标划上去停止，移开自动轮播
+     * */
+    //1.获取元素
+    var container = document.getElementById("container");
+    var list = document.getElementById("list");
+    var prev = document.getElementById("prev");
+    var next = document.getElementById("next");
+    var buttons = document.getElementById('buttons').getElementsByTagName('span');
+    var timer = null;
+    var timer2 = null;
+    var flag = true;
+    var index = 0;
+    //2.设置函数
+    function moveImg(dis) {
+      var time = 4000; //运动的总时间
+      var eachTime = 500; //每次小移动的时间
+      var eachDis = dis / (time / eachTime); //每次小移动的距离
+      var newWeizhi = parseInt(list.style.left) + dis; //新位置
+      flag = false;
+
+      function eachMove() {
+        if (dis > 0 && parseInt(list.style.left) < newWeizhi ||
+          dis < 0 && parseInt(list.style.left) > newWeizhi) {
+          list.style.left = parseInt(list.style.left) + eachDis + 'px';
+        } else {
+          flag = true;
+          clearInterval(timer);
+          list.style.left = newWeizhi + 'px';
+          //无限滚动判断
+          if (newWeizhi == 0) {
+            list.style.left = -2600 + 'px';
+          }
+          if (newWeizhi == -3120) {
+            list.style.left = -520 + 'px';
+          }
+        }
+      }
+      timer = setInterval(eachMove, 10);
+    }
+    //3.设置点击切换图片
+    next.onclick = function () {
+      if (!flag) return;
+      moveImg(-520);
+      //绑定箭头和小圆点
+      if (index == 4) {
+        index = 0;
+      } else {
+        index++;
+      }
+      buttonsShow();
+    };
+    prev.onclick = function () {
+      if (!flag) return;
+      moveImg(520);
+      //绑定箭头和小圆点
+      if (index == 0) {
+        index = 4;
+      } else {
+        index--;
+      }
+      buttonsShow();
+    };
+    //4.设置小圆点的绑定
+    function buttonsShow() {
+      //将之前的小圆点的样式清除
+      for (var i = 0; i < buttons.length; i++) {
+        if (buttons[i].className == "on") {  
+          buttons[i].className = "";  
+          break;  
+        }
+      }
+      buttons[index].className = "on";
+    }
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].value = i;
+      //使用自执行函数解决i的赋值问题
+      (function () {
+        buttons[i].onclick = function () {
+          if (this.value == index) return;
+          var offset = (this.value - index) * -520;
+          moveImg(offset);
+          index = this.value;
+          buttonsShow();
+        }
+      })();
+
+    }
+    //5.设置自动轮播
+    timer2 = setInterval(next.onclick, 1500);
+    container.onmouseover = function () {
+      clearInterval(timer2);
+    };
+    container.onmouseout = function () {
+      timer2 = setInterval(next.onclick, 1000);
+    };
+  </script>
+</body>
+
+</html>

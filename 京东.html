@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style> 
+        .jiantou { 
+         height: 36px; 
+         width: 24px; 
+         line-height: 36px; 
+         text-align: center; 
+         background-color: rgba(0, 0, 0, .3); 
+         font-size: 14px; 
+         color: #fff; 
+         position: absolute; 
+         top: 0; 
+         bottom: 0; 
+         margin: auto 0; 
+         display: none; 
+         z-index: 99999; 
+         cursor: pointer; 
+        } 
+         
+        .left { 
+         left: 0; 
+        } 
+         
+        .right { 
+         right: 0; 
+        } 
+         
+        ul li { 
+         height: 20px; 
+         width: 20px; 
+         background-color: #B7B7B7; 
+         float: left; 
+         border-radius: 50%; 
+         margin: 2px; 
+        } 
+         
+        ul { 
+         position: absolute; 
+         bottom: 15px; 
+         margin: 0 auto; 
+         background-color: rgba(255, 255, 255, .3); 
+         border-radius: 10px; 
+         left: 300px; 
+         z-index: 9999; 
+         cursor: pointer; 
+        } 
+         
+        .on { 
+         background-color: #F40; 
+        } 
+         
+        img { 
+         width: 790px; 
+         height: 340px; 
+         position: absolute; 
+         opacity: 0; 
+         /*transition: all 2s;*/ 
+         /*transition: all 0.5s;*/ /*时间给短一些*/ 
+         transition: opacity 0.5s; /*不要写all 那么就不会影响到z-index*/ 
+         z-index: 0; 
+        } 
+         
+        .in { 
+         width: 790px; 
+         height: 340px; 
+        } 
+         
+        #out { 
+         width: 790px; 
+         height: 340px; 
+         margin: 100px auto; 
+         position: relative; 
+        } 
+         
+        #out:hover .jiantou { 
+         display: block; 
+        } 
+        li{
+            list-style: none;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        </style> 
+       </head> 
+       <body> 
+       <div id="out"> 
+        <div class="in"> 
+        <img src="img/taobao/t1.jpg" alt="" style="opacity: 1;z-index:1"/> 
+        <img src="img/taobao/t2.jpg" alt=""/> 
+        <img src="img/taobao/t1.jpg" alt=""/> 
+        <img src="img/taobao/t2.jpg" alt=""/> 
+        <img src="img/taobao/t5.jpg" alt=""/> 
+        <img src="img/taobao/t1.jpg" alt=""/> 
+        <img src="img/taobao/t5.jpg" alt=""/> 
+        <img src="img/taobao/t2.jpg" alt=""/> 
+        </div> 
+        <div class="left jiantou"><</div> 
+        <div class="right jiantou">></div> 
+        <ul class="clearFix"> 
+        <li class="on"></li> 
+        <li ></li> 
+        <li ></li> 
+        <li ></li> 
+        <li ></li> 
+        <li ></li> 
+        <li ></li> 
+        <li ></li> 
+        </ul> 
+       </div> 
+       <script> 
+        var out = document.getElementById("out"); 
+        var img = document.images; 
+        var left = document.getElementsByClassName("left").item(0); 
+        var right = document.getElementsByClassName("right").item(0); 
+        var lilist = document.getElementsByTagName("li"); 
+        var index = 0;//标识哪张图片正在出现 
+        var timer = null; 
+        var timer1 = null; 
+         
+        right.onclick = function () { 
+        //把所有人的opacity置为0 
+        /*for (var i = 0; i < img.length; i++) { 
+         img[i].style.opacity = 0; 
+         }*/ 
+        img[index].style.opacity = 0; 
+        img[index].style.zIndex = 0; 
+        lilist[index].className = ''; 
+       // index++; 
+        index == 7 ? index = 0 : index++; 
+        lilist[index].className = 'on'; 
+        img[index].style.opacity = 1; 
+        img[index].style.zIndex = 1; 
+         
+        }; 
+         
+        left.onclick = function () { 
+        img[index].style.opacity = 0; 
+        lilist[index].className = ''; 
+        img[index].style.zIndex = 0; 
+       // index--; 
+        index == 0 ? index = 7 : index--; 
+        lilist[index].className = 'on'; 
+        img[index].style.opacity = 1; 
+        img[index].style.zIndex = 1; 
+        }; 
+         
+        for (var i = 0; i < lilist.length; i++) { 
+        lilist[i].value = i; 
+        lilist[i].onmouseover = function () { 
+         var that = this; 
+         timer=setTimeout(function () { 
+         img[index].style.opacity = 0; 
+         lilist[index].className = ''; 
+         img[index].style.zIndex = 0; 
+         
+         index = that.value; 
+         
+         lilist[index].className = 'on'; 
+         img[index].style.opacity = 1; 
+         img[index].style.zIndex = 1; 
+         },300) 
+        }; 
+        lilist[i].onmouseout = function () { 
+         clearTimeout(timer); 
+        } 
+        } 
+        out.onclick = function (e) { 
+        console.log(e.target); 
+        }; 
+        timer1 = setInterval(right.onclick,2000); 
+        out.onmouseover = function () { 
+        clearInterval(timer1); 
+        }; 
+        out.onmouseout = function () { 
+        timer1 = setInterval(right.onclick, 2000); 
+        }; 
+        var num =5
+        var arr = []; 
+        var img =document.images; 
+        for(var i=0;i<img.length;i++){ 
+        if(i<5){ 
+         arr.push(img[i].offsetHeight); 
+        }else { 
+         img[i].style.position='abl'
+        } 
+        } 
+         
+       </script> 
+         
+         
+       </body> 
+</html>
