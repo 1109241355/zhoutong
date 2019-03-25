@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>抽奖</title>
+    
+    <style>
+        ul{ width:328px;}
+        li {
+            width: 100px;
+            height: 100px;
+            border: 1px #000 solid;
+            float: left;
+            margin-left: 5px;
+            list-style: none;
+        }
+        .active{ background:red;}
+    </style>
+   
+</head>
+<body>
+<input type="button" value="抽奖">
+
+<ul>
+    <li>1等奖</li>
+    <li>2等奖</li>
+    <li>3等奖</li>
+    <li>4等奖</li>
+    <li>5等奖</li>
+    <li>6等奖</li>
+    <li>7等奖</li>
+    <li>8等奖</li>
+    <li>9等奖</li>
+    <div></div>
+</ul>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script>
+    var timerId=0
+    var index=0
+    $(function () {
+        $('input').click(function () {
+            var step=25+(Math.floor(Math.random())*20)
+            timerId=setInterval(function () {
+                $('li').addClass('active').eq(index%9).siblings().removeClass('active')
+                index++;
+                step--;
+                if(step==0){
+                    clearInterval(timerId)
+                    var text=$('.active').text()
+                    $('div').text("恭喜您"+text)
+                }
+            },200)
+        })
+    })
+
+</script>
+<script>
+    //创建一个定时器标识
+    var timerId = 0 ;
+    //创建一个索引
+    var index = 0;
+    //jq核心语法$()
+    $(function(){
+        //获取input标签并且绑定一个点击事件
+        $('input').click(function(){
+            //随机数  floor==>向下取整25-45
+            var step = 25 + (Math.floor(Math.random()) * 20)
+            //设置一个定时器
+            timerId = setInterval(function(){
+                //获取li标签  eq==>比如0代表第一个，1代表第二个  siblings==>用于筛选同辈元素的表达式
+                $('li').addClass('active').eq(index%9).siblings().removeClass('active');
+                //索引自增
+                index++;
+                //设置的随机数自减
+                step--;
+                //判断随机最后的值
+                if(step == 0){
+                    //停止定时器
+                    clearInterval(timerId)
+                    //添加内容
+                    var text = $('.active').text();
+                    //
+                    $('div').text("恭喜您"+text)
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>
+

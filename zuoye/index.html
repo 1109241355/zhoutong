@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      img {
+        height: 500px;
+        height: 400px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <img src="" guoyu="img/1.png" alt="" />
+    <img src="" guoyu="img/2.png" alt="" />
+    <img src="" guoyu="img/3.png" alt="" />
+    <img src="" guoyu="img/4.png" alt="" />
+    <img src="" guoyu="img/5.png" alt="" />
+    <img src="" guoyu="img/6.png" alt="" />
+    <img src="" guoyu="img/7.png" alt="" />
+    <img src="" guoyu="img/8.png" alt="" />
+    <img src="" guoyu="img/9.png" alt="" />
+    <img src="" guoyu="img/10.png" alt="" />
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+      var almg = document.querySelectorAll("img");
+      var len = almg.length;
+      var n = 0;
+      window.onscroll = function() {
+        var seeHeight = document.documentElement.clientHeight;
+        var scrollTop =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        for (var i = n; i < len; i++) {
+          if (aImg[i].offsetTop < seeHeight + scrollTop) {
+            if (aImg[i].getAttribute("src") == "") {
+              aImg[i].src = aImg[i].getAttribute("guoyu-src");
+            }
+            n = i + 1;
+            console.log("n = " + n);
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
