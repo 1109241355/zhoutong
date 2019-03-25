@@ -1,0 +1,15 @@
+
+<!-- saved from url=(0034)https://c.runoob.com/codedemo/5456 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./jquery.min.js(1).下载"></script>
+</head><body>
+<h2>这是一个标题</h2>
+<p style="background-color:#ff0000">这是一个段落。</p>
+<p style="background-color:#00ff00">这是一个段落。</p>
+<p style="background-color:#0000ff">这是一个段落。</p>
+<button>返回第一个 p 元素的 background-color </button>
+<style>p:nth-child(2)
+</style><script>$("button").click(function(){
+  alert("p1背景颜色 = " + $("p:nth-child(2)").css("background-color"));
+  alert("p2背景颜色 = " + $("p:nth-child(3)").css("background-color"));
+  alert("p3背景颜色 = " + $("p:nth-child(4)").css("background-color"));
+});</script></body></html>

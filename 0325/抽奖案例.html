@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			.big_box {
+				margin: 100px auto;
+			}
+			
+			#chou {
+				display: block;
+				width: 100px;
+				height: 30px;
+				margin: 20px auto;
+				cursor: pointer;
+			}
+			
+			.box {
+				margin: 0 auto;
+				width: 302px;
+				height: 302px;
+				border: 1px solid black;
+				box-sizing: border-box;
+			}
+			
+			.box li {
+				float: left;
+				width: 100px;
+				height: 100px;
+				border: 1px solid red;
+				text-align: center;
+				line-height: 100px;
+				box-sizing: border-box;
+				cursor: pointer;
+			}
+			
+			#dengji {
+				width: 200px;
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				margin: 30px auto;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="big_box">
+			<div class="box" id="allbox">
+				<ul>
+					<li>一等奖</li>
+					<li>二等奖</li>
+					<li>三等奖</li>
+					<li>四等奖</li>
+					<li>五等奖</li>
+					<li>六等奖</li>
+					<li>七等奖</li>
+					<li>八等奖</li>
+					<li>九等奖</li>
+				</ul>
+			</div>
+
+			<div id="dengji"></div>
+
+			<input type="button" id="chou" value="开始"></input>
+		</div>
+
+		<script src="js/jquery-1.11.3/jquery.js"></script>
+		<script>$(document).ready(function() {
+	var allList=$("li");
+	//console.log(allList.length);
+	var aa=true, time=null;
+	//点击事件
+	$("#chou").click(function() {
+		if(aa) {
+			time=setInterval(function() {
+				allList.innerHTML=suiji();
+			},100) 
+			$(this).val("停止");
+			aa=false;
+		}
+		else {
+			clearInterval(time);
+			$(this).val("开始");
+			aa=true;
+			$("#dengji").html("恭喜获得" + allList.eq(x).html());
+		}
+	}
+	) //定义一个随机数变量
+	var x;
+	function suiji() {
+		$("li").css("background-color", "#ffffff");
+		x=parseInt(Math.random() * allList.length);
+		allList.eq(x).css("background-color", "skyblue");
+		$("#dengji").html("恭喜获得" + allList.eq(x).html());
+	}
+})</script>
+	</body>
+
+</html>
