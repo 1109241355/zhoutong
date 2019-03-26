@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>懒加载2</title>
+    <style>
+       *{
+           margin: 0;
+           padding: 0;
+       }
+       li{
+           list-style: none;
+           height: 800px;
+           box-sizing: border-box;
+           border: 1px solid #000;
+       }
+       img{
+           display: block;
+           margin: 100px auto;
+       }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li><img data-src="images/1.jpg" alt=""></li>
+            <li><img data-src="images/2.jpg" alt=""></li>
+            <li><img data-src="images/3.jpg" alt=""></li>
+            <li><img data-src="images/4.jpg" alt=""></li>
+            <li><img data-src="images/5.jpg" alt=""></li>
+            <li><img data-src="images/6.jpg" alt=""></li>
+            <li><img data-src="images/7.jpg" alt=""></li>
+            <li><img data-src="images/8.jpg" alt=""></li>
+            <li><img data-src="images/9.jpg" alt=""></li>
+        </ul>
+    </div>
+    <script>
+        window.onload = function(){
+            imgonload()
+            //图片加载
+            function imgonload(){
+                //获取所有图片
+                let img = document.querySelectorAll('img')
+                //对所有图片进行遍历
+                for(let i = 0 ; i < img.length ; i++){
+                    //getBoundingClientRect用于获取某个元素相对于视窗的位置集合。
+                    //集合中有top, right, bottom, left等属性。
+                    //innerheight	返回窗口的文档显示区的高度。
+                    //进行判断 如果照片顶部位置小于文档窗口高度
+                    if(img[i].getBoundingClientRect().top < window.innerHeight){
+                        //对img.src赋值
+                        img[i].src = img[i].dataset.src;
+                    }
+                }
+            }
+            //防抖
+            function debounce(fn,time){
+                let timer = null;
+                let self = this;
+                let args = arguments;
+                return function(){
+                    clearTimeout(timer)
+                    timer = setTimeout(function(){
+                        fn.apply(self,args)   
+                    },time)
+                    //es6箭头函数
+                    // timer = setTimeout(()=>{
+                    //     fn.apply(self,args)   
+                    // },500)
+                }
+            }
+            window.onscroll = debounce(imgonload,500)
+
+        
+         
+
+
+
+          
+        }
+       
+    </script>
+</body>
+
+</html>

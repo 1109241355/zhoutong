@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #u1 li {
+            margin-bottom: 10px;
+            background-color: Orange;
+            font-size: 20px;
+            font-weight: bolder;
+            cursor: pointer;
+        }
+
+        #u1 li ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        #u1 li ul li {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div style=" width:200px; height:500px; border:1px solid red;">
+        <ul id="u1" style=" list-style-type:none; margin:0; padding:0; text-align:center;">
+            <li>
+                幼儿园同学
+                <ul>
+                    <li>鼻涕虫</li>
+                    <li>爱哭鬼</li>
+                    <li>张大胆</li>
+                    <li>班主任</li>
+                </ul>
+            </li>
+            <li>小学同学
+                <ul>
+                    <li>张三丰</li>
+                    <li>张无忌</li>
+                    <li>乔布斯</li>
+                    <li>助教</li>
+                </ul>
+            </li>
+            <li>
+                初中同学
+                <ul>
+                    <li>盖茨</li>
+                    <li>川普</li>
+                    <li>奥巴马</li>
+                    <li>凤姐</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script>
+   $(function(){
+     $("ul>li>ul").hide();
+     $("ul>li").click(function(){
+        $(this).children("ul").show(500);
+        $(this).siblings().find("ul").hide(500);
+     })
+   });
+</script>
+</html>
