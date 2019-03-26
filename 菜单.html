@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>手风琴</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    ul,
+    li {
+        list-style: none;
+    }
+
+    .ceng {
+        width: 150px;
+        background: skyblue;
+        border: 1px solid blue;
+        box-sizing: border-box;
+    }
+
+    .dianji {
+        width: 150px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .xianshi {
+        width: 150px;
+        height: 80px;
+        display: none;
+    }
+
+    .xianshi>span {
+        width: 150px;
+        height: 20px;
+        background: yellow;
+        float: left;
+        border: 1px solid yellowgreen;
+        box-sizing: border-box;
+        text-align: center;
+        line-height: 20px;
+
+    }
+</style>
+
+<body>
+    <ul class="big">
+        <li class="ceng">
+            <p class="dianji">第一季</p>
+            <div class="xianshi">
+                <span>第1集</span>
+                <span>第2集</span>
+                <span>第3集</span>
+                <span>第4集</span>
+            </div>
+        </li>
+        <li class="ceng">
+            <p class="dianji">第二季</p>
+            <div class="xianshi">
+                <span>第5集</span>
+                <span>第6集</span>
+                <span>第7集</span>
+                <span>第8集</span>
+            </div>
+        </li>
+        <li class="ceng">
+            <p class="dianji">第三季</p>
+            <div class="xianshi">
+                <span>第9集</span>
+                <span>第10集</span>
+                <span>第11集</span>
+                <span>第12集</span>
+            </div>
+        </li>
+        <li class="ceng">
+            <p class="dianji">第四季</p>
+            <div class="xianshi">
+                <span>第13集</span>
+                <span>第14集</span>
+                <span>第15集</span>
+                <span>第16集</span>
+            </div>
+        </li>
+    </ul>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+        var i = 2;
+        $(".dianji").click(function () {
+            // console.log($(this).next().css("display"));
+            if (i % 2 == 0) {
+
+                $(this).next().slideDown(200).parent().siblings().children("div").slideUp(200);
+                // console.log(i);
+            } else {
+                if ($(this).next().css("display") == "none") {
+                    $(this).next().slideDown(200).parent().siblings().children("div").slideUp(200);
+                    i++
+                } else {
+                    $(this).next().slideUp(200);
+                }
+            }
+            console.log(i);
+            i++;
+        })
+    </script>
+</body>
+
+</html>
