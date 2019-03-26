@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swich按钮</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .box{
+            width: 90px;
+            height: 40px;
+            margin: 100px auto;
+            border-radius: 20px;
+            background-color: yellowgreen;
+        }
+
+        .big_box {
+            background-color: blue;
+            transition: all .3s;
+
+        }
+        .yuan{
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background-color: red;
+            transition: all .3s;
+            cursor: pointer;
+
+        }
+        .dong{
+            transform: translateX(50px);
+            background-color: black;
+            transition: all .3s;
+        }
+        .Box{
+            margin: 100px auto;
+            width: 300px;
+            height: 300px;
+        }
+
+        .divhidd{
+            width: 150px;
+            margin: 10px auto;
+            text-align: center;
+            line-height: 30px;
+            background-color: yellowgreen;
+            cursor: pointer;
+        }
+
+        .divcen{
+            margin-top: 10px;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<!--开关-->
+<div class="box">
+    <div class="yuan"></div>
+</div>
+
+
+<div class="Box">
+ <div class="divhidd">哈哈哈哈
+     <div class="divcen">
+         <p>111</p>
+         <p>111</p>
+         <p>111</p>
+         <p>111</p>
+     </div>
+ </div>
+
+
+
+
+
+    <div class="divhidd">哈哈哈哈
+        <div class="divcen">
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+        </div>
+    </div>
+
+
+
+
+    <div class="divhidd">哈哈哈哈
+        <div class="divcen">
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="divhidd">哈哈哈哈
+        <div class="divcen">
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+  <script src="js/jquery-1.11.3/jquery.js"></script>
+       <script>
+        $(document).ready(function() {
+        //编写jQuery代码
+            //开关
+            $(".yuan").click(function () {
+                $(".yuan").toggleClass("dong");
+                $(".box").toggleClass("big_box");
+            });
+
+             // console.log( $(".divhidd").length)
+             // for(var i =0; i< $(".divhidd").length; i++){
+                 $(".divhidd").click(function () {
+                     $(this).children(".divcen").slideToggle("slow");
+                 });
+             // }
+
+            // console.log($(this))
+       });
+       </script>
+
+</body>
+</html>

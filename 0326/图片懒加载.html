@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片懒加载</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #box{
+            margin: 100px 100px;
+        }
+
+        #box li{
+            width: 520px;
+            height: 270px;
+            float: left;
+            margin: 3px 3px;
+            cursor: pointer;
+        }
+
+        #box li img{
+            width:100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="./img/lunboer/dong1.jpg" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="" date-src="./img/lunboer/dong2.jpg"/></li>
+        <li><img src="" date-src="./img/lunboer/dong2.jpg"/></li>
+    </ul>
+</div>
+
+
+  <script src="js/jquery-1.11.3/jquery.js"></script>
+       <script>
+        // $(document).ready(function() {
+        //编写jQuery代码
+
+            // var allImg = document.querySelectorAll("img");
+
+        //滑轮滑动事件
+        // window.addEventListener("scroll",debounce(lazyLoad,100));
+        //     function lazyLoad() {
+        //         for(var i =0; i<allImg.length; i++){
+        //                 if(allImg[i].getBoundingClientRect().top < window.innerHeight){
+        //                     allImg[i].src = allImg[i].getAttribute("date-src");
+        //                 }
+        //             }
+        //         }
+
+
+
+
+
+
+
+
+
+
+
+        var allList = document.getElementsByTagName("li");
+        var allImgs = document.getElementsByTagName("img");
+
+
+
+
+        window.onscroll = thrttle(function () {
+            for(var i =0; i<allList.length; i++){
+
+                var ofTop = getTop(allList[i]);
+                // var ofTop = allList[i].offsetTop;
+                var cliHeight = document.documentElement.clientHeight;
+                var scrTop = document.documentElement.scrollTop;
+                if(ofTop < (cliHeight + scrTop)){
+                    allImgs[i].src = allImgs[i].getAttribute("date-src");
+                }
+            }
+        },1000);
+        
+        
+        
+        function getTop(ele) {
+            var ofTop = ele.offsetTop;
+            var ofParent = ele.offsetParent;
+
+            while (ofParent != null){
+                ofTop += ofParent.offsetTop;
+                ofParent = ofParent.offsetParent;
+            }
+            return ofTop;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //节流
+        function  thrttle(fn, time) {
+                var befortime = 0;
+        	return function () {
+        		var self = this;
+        		var args = arguments;
+        		var currtime = +new Date();
+        		if(currtime - befortime >= time){
+        			fn.apply(self,args);
+        			befortime = currtime;
+        		}
+        	}
+        }
+
+
+
+        //防抖
+        function debounce(fn,time) {
+        	var timer = null;
+        	return function(){
+        		var self = this;
+        		var args = arguments;
+        		clearTimeout(timer);
+        		timer = setTimeout(function(){
+        			fn.apply(self,args);
+        		},time)
+        	}
+        }
+
+
+       // })
+       </script>
+
+</body>
+</html>
