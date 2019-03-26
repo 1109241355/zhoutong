@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            ul,
+            li {
+                list-style: none;
+            }
+
+            .container {
+                width: 600px;
+                margin: 0 auto;
+            }
+
+            .container li {
+                float: left;
+                margin: 50px 10px;
+            }
+
+            .container li img {
+                width: 240px;
+                height: 180px;
+            }
+
+            p {
+                float: left;
+            }
+    </style>
+</head>
+<body>
+        <ul class="container">
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+                <li><a href="#"><img src="./img/loading.gif" data-src="./img/1.jpg" /></a></li>
+            </ul>
+</body>
+<script>
+    window.onload=window.onscroll=debounce(function(){
+        var liDom=document.getElementsByTagName("li");
+        var imgDOM=document.getElementsByTagName("img");
+        for(var i=0;i<liDom.length;i++){
+            var ofT=getElemenTop(liDom[i]);
+            var clH=document.documentElement.clientHeight;
+            var scT=document.documentElement.scrollTop;
+            if(ofT<clH+scT){
+                imgDOM[i].src=imgDOM[i].getAttribute("data-src");
+            }
+        }
+    },2000);
+    
+        function getElemenTop(elemnt){
+            var ofT=elemnt.offsetTop;
+            var ofP=elemnt.offsetParent;
+            while(ofP!==null){
+                ofT+=ofP.offsetTop;
+                ofP=ofP.offsetParent;
+            }
+            return ofT;
+        }
+        function debounce(fn,time){
+            var b=null;
+            return function(){
+                clearTimeout(b);
+                var s=this;
+                var a=arguments;
+                b=setTimeout(function(){
+                    fn.apply(s,a);
+                },time);
+            }
+        }
+</script>
+</html>

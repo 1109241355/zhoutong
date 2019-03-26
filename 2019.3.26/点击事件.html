@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      ul {
+        width: 200px;
+        height: 40px;
+        margin: 300px auto;
+      }
+
+      li {
+        display: block;
+        float: left;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: skyblue;
+        margin: 0 10px;
+        cursor: pointer;
+      }
+
+      .act {
+        background: yellowgreen;
+      }
+      .act {
+        background: yellow;
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul class="box" id="box">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </body>
+  <script>
+    // window.onload = function () {
+
+    var box = document.getElementById("box");
+    var liDom = document.getElementsByTagName("li");
+
+    Object.prototype.addClass = function(num) {
+      return this.classList.add(num);
+    };
+    Object.prototype.removeClass = function(num) {
+
+            return   this.classList.remove(num);
+    };
+    Object.prototype.eq = function(num) {
+      return this[num];
+    };
+
+    Object.prototype.siblings = function(callback){
+    var siblingElement = [];
+    var parentAllElement = [];
+    if( ! this.parentNode ){
+        return siblingElement;
+    };
+    parentAllElement = this.parentNode.getElementsByTagName(this.tagName);
+    for( var i = 0; i < parentAllElement.length ; i++ ){
+        if( parentAllElement[i] != this ){
+            siblingElement.push(parentAllElement[i]);
+            typeof callback == "function" && callback.call(parentAllElement[i]);
+        }
+    }
+    delete parentAllElement;
+    return siblingElement;
+    };
+
+    for (let i = 0; i < liDom.length; i++) {
+      liDom[i].onclick = function() {
+        // liDom.eq(i).addClass("act").siblings[i].removeClass("act");
+      };
+    }
+
+    // }
+  </script>
+</html>

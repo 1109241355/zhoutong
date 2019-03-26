@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 150px;
+            margin: 50px auto;
+        }
+
+        .box {
+            width: 150px;
+            line-height: 30px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .box span {
+            display: block;
+            width: 150px;
+            height: 30px;
+            line-height: 30px;
+            background: red;
+        }
+
+        .box ul {
+            display: none;
+            width: 150px;
+         
+        }
+
+        .box ul li {
+           
+            list-style: none;
+            height: 30px;
+            line-height: 30px;
+            background: skyblue;
+        }
+
+        .clear {
+            clear: both;
+        }
+        .box  .act{
+            display: block;
+        }
+        .swict{
+            width: 150px;
+            height: 50px;
+            border-radius: 50px;
+            border:1px solid #f5e1e1;
+            box-sizing: border-box;
+        }
+        .swict2{
+            background: yellowgreen;
+            transition: all .3s;
+        }
+        .yuan{
+            position: relative;
+            left: -1px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: skyblue;
+        }
+        .yuan2{
+            left: 1px;
+            transform: translateX(100px);
+            transition: all .2s;
+        }
+        .act{
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="swict">
+            <div class="yuan"></div>
+        </div>
+        <div class="box">
+            <span>我是1</span>
+            <ul>
+                <li>1111</li>
+                <li>1111</li>
+                <li>1111</li>
+                <li>1111</li>
+                <li>1111</li>
+            </ul>
+        </div>
+        <div class="box">
+            <span>我是2</span>
+            <ul>
+                <li>2222</li>
+                <li>2222</li>
+                <li>2222</li>
+                <li>2222</li>
+                <li>2222</li>
+            </ul>
+        </div>
+        <div class="box">
+            <span>我是3</span>
+            <ul>
+                <li>3333</li>
+                <li>3333</li>
+                <li>3333</li>
+                <li>3333</li>
+                <li>3333</li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+</body>
+    <script src="../jquery-2.0.3/jquery-2.0.3.js"></script>
+    <script>
+       
+        $(function () {
+            var k=2;
+        $(".swict").click(function(){
+           
+            if(!$(".yuan").hasClass("yuan2")){
+            $(".yuan").addClass("yuan2");
+            $(".swict").addClass("swict2");
+            }else{
+                $(".yuan").removeClass("yuan2");
+            $(".swict").removeClass("swict2");
+            }
+            k++;
+        });
+
+
+        for(let i=0;i<$(".box").length;i++){
+            $(".box").eq(i).click(function () {
+                if($("ul").eq(i).hasClass("act")){
+                    $("ul").eq(i).removeClass("act");
+                }else{
+                    $("ul").eq(i).addClass("act");
+                }
+            });
+        }
+    })
+    </script>
+</html>
