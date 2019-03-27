@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            width: 200px;
+            height: 40px;
+            margin: 300px auto;
+        }
+
+        li {
+            display: block;
+            float: left;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: skyblue;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .act {
+            background: yellowgreen;
+        }
+
+        .act {
+            background: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="box" id="box">
+        <li ></li>
+        <li class="act"></li>
+        <li class="act"></li>
+        <li class="act"></li>
+    </ul>
+</body>
+<script>
+
+        window.Jquery=window.$=function(selector){
+            return new JqueryConstructor(selector);
+        }
+
+        function JqueryConstructor(selector){
+            this.nList=document.querySelectorAll(selector);
+          
+            this.eles=Array.prototype.slice.call(this.nList,0);
+            // console.log(this.eles);
+            this.tempEles=this.eles.slice(0);
+            var c=[];
+            // console.log(this.tempEles)
+            return this;
+        }
+        JqueryConstructor.prototype={
+            addClass:function(className){
+               
+                this.tempEles.forEach(function(item,index){
+                    item.classList.add(className);
+                });
+                // console.log(this.tempEles)
+                return this;
+                
+            },
+            removeClass:function(className){
+                this.tempEles.forEach(function(item,index){
+                    item.classList.remove(className);
+                });
+            },
+            eq:function(index){
+                this.tempEles=[];
+                this.tempEles.push(this.eles[index]);
+                // console.log(this.tempEles)
+                this.suoyin = index;
+                return this;
+            },
+            siblings: function () {
+                this.tempEles=[];
+                // console.log(this.tempEles)
+                for (let i = 0; i < this.nList.length; i++) {
+                    if (this.suoyin !== i) {
+                        this.tempEles.push(this.eles[i]);
+                    }
+                }
+                
+                return this;
+            }
+        }
+        
+        $(".box li").eq(0).addClass("act").siblings().removeClass("act");
+
+    
+</script>
+
+</html>
