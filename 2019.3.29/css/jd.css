@@ -1,0 +1,352 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+form,
+fieldset,
+legend,
+button,
+input,
+textarea,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+body,
+button,
+input,
+select,
+textarea {
+  font: 0.12rem, arial;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+}
+address,
+cite,
+dfn,
+em,
+var {
+  font-style: normal;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: couriernew, courier, monospace;
+}
+small {
+  font-size: 0.12rem;
+}
+ul,
+ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+a:hover {
+  text-decoration: none;
+}
+sup {
+  vertical-align: text-top;
+}
+sub {
+  vertical-align: text-bottom;
+}
+legend {
+  color: #000;
+}
+fieldset,
+img {
+  border: 0;
+}
+i {
+  font-style: normal;
+}
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.sk {
+  height: 275px;
+  margin-bottom: 30px;
+}
+.sk_inner {
+  background: #fff;
+  overflow: hidden;
+  margin: 0 auto;
+  width: 1190px;
+}
+.sk_inner .sk_hd {
+  position: relative;
+  float: left;
+  width: 190px;
+  height: 275px;
+  background: #e83632;
+  color: #fff;
+}
+.sk_inner .sk_hd a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+}
+.sk_tit {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  top: 42px;
+  font-size: 34px;
+}
+.sk_sbuit {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  top: 90px;
+  color: #f19999;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 20px;
+}
+.sk_ico {
+  position: absolute;
+  left: 86px;
+  top: 126px;
+  display: block;
+  width: 20px;
+  height: 33px;
+  background-image: url(../img/sprite.seckill.png);
+  background-position: -35px -25px;
+}
+.sk_desc {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  top: 170px;
+  font-size: 16px;
+}
+.sk_cd {
+  position: absolute;
+  top: 212px;
+  left: 30px;
+  height: 40px;
+}
+.sk_cd .cd .cd_time {
+  position: relative;
+  float: left;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  background-color: #2f3430;
+  margin-right: 5px;
+}
+.sk_cd .cd .cd_time .cd_item_txt {
+  position: relative;
+  line-height: 40px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.cd_time::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 50%;
+  height: 1px;
+  background: #e83632;
+}
+.sk_list {
+  position: relative;
+  float: left;
+  width: 799px;
+  border-right: solid 1px #f0f0f0;
+  height: 275px;
+  overflow: hidden;
+}
+.sk_list .sk_list_wrap {
+  position: relative;
+  width: 800px;
+  height: 275px;
+}
+.list_wrap {
+  position: relative;
+  width: 800px;
+  height: 275px;
+  overflow: hidden;
+}
+.list_wrap .list_str {
+  width: 3200px;
+  float: left;
+  position: absolute;
+}
+.list_wrap .list_str .slider_item {
+  position: relative;
+  float: left;
+  width: 200px;
+  height: 275px;
+}
+.slider_sk {
+  position: relative;
+  display: block;
+  width: 190px;
+  height: 275px;
+  text-align: center;
+  margin: auto;
+  color: #666;
+}
+.slider_sk .slider_tit {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  left: 50%;
+  margin-left: -70px;
+  top: 40px;
+}
+.slider_sk .slider_name {
+  position: absolute;
+  top: 190px;
+  left: 0;
+  width: 160px;
+  padding: 0 15px;
+  line-height: 30px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.slider_sk .slider_price {
+  position: absolute;
+  left: 15px;
+  top: 230px;
+  width: 160px;
+  height: 20px;
+  padding: 1px;
+  background: #e6382f;
+  line-height: 20px;
+}
+.slider_sk .slider_price .span_price {
+  float: left;
+  width: 80px;
+  height: 20px;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+}
+.slider_sk .slider_price .span_price i {
+  margin-right: 3px;
+  font-family: arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+}
+.slider_sk .slider_price .span_price_org {
+  float: left;
+  width: 80px;
+  height: 20px;
+  background: #fff;
+  text-align: center;
+  color: #b7bcb8;
+  font-size: 12px;
+  text-decoration: line-through;
+}
+.slider_sk .slider_price .span_price_org i {
+  margin-right: 3px;
+  font-family: arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+}
+.slider_control {
+  position: absolute;
+  top: 110px;
+  width: 20px;
+  height: 40px;
+  line-height: 40px;
+  background-color: #d9d9d9;
+  background-color: rgba(0, 0, 0, 0.15);
+  margin-top: -20px;
+  font-size: 20px;
+  z-index: 2;
+  transition: background-color 0.2s ease;
+}
+.slider_preo {
+  left: 0;
+}
+.slider_sero {
+  right: 0;
+}
+.sk_chn {
+  position: relative;
+  float: left;
+  width: 180px;
+  height: 260px;
+  padding: 8px 10px 7px;
+}
+.sk_chn .slider_list {
+  overflow: hidden;
+}
+.slider_wrapper {
+  opacity: 1;
+  width: 360px;
+  float: left;
+}
+.slider_wrapper .sk_chn_lk {
+  float: left;
+  width: 180px;
+  display: block;
+}
+.slider_wrapper .sk_chn_lk .sk_chn_img {
+  width: 180px;
+  height: 260px;
+  position: relative;
+  overflow: hidden;
+}
+.slider_ind {
+  position: absolute;
+  left: 50%;
+  font-size: 0;
+  text-align: center;
+  bottom: 16px;
+  margin-left: -14px;
+}
+.slider_ind .slider_ind_btn {
+  position: relative;
+  display: inline-block;
+  background: #c0c0c0;
+  width: 6px;
+  height: 6px;
+  margin: 4px;
+  transition: all 0.2s ease;
+  border-radius: 50%;
+}
+.slider_ind .slider_ind_red {
+  background: #e33333;
+}
