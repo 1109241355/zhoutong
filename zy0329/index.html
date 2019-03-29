@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .wrap{
+            width: 590px;
+            height: 470px;
+            margin: 0 auto;
+            /* overflow: hidden;  */
+            position: relative;
+        }
+        .box{
+            position: absolute;
+            z-index: -1;
+            width: 3540px;
+        }
+        .box li{
+            float: left;
+        }
+        .box li img{
+            vertical-align: top;
+        }
+        .left{
+            width: 20px;
+            height: 40px;
+            position: absolute;
+            top: 50%;
+            left:0;
+            margin-top: -20px;
+            background: rgba(0, 0, 0, .6);
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+        }
+        .right{
+            width: 20px;
+            height: 40px;
+            position: absolute;
+            top: 50%;
+            right:0;
+            margin-top: -20px;
+            background: rgba(0, 0, 0, .6);
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+        }
+        .s{
+            position: absolute;
+            bottom: 20px;
+            left:50%;
+            margin-left:-80px;
+        }
+        .s span{
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: skyblue;
+            margin-right:10px;
+        }
+        .s .on{
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+        <div class="wrap">
+                <div class="left"><</div>
+                <div class="right">></div>
+                <ul class="box">
+                    <li><img src="img/1.jpg" alt=""></li>
+                    <li><img src="img/2.jpg" alt=""></li>
+                    <li><img src="img/3.jpg" alt=""></li>
+                    <li><img src="img/4.jpg" alt=""></li>
+                    <li><img src="img/5.jpg" alt=""></li>
+                    <li><img src="img/1.jpg" alt=""></li>
+                </ul>
+                <div class="s">
+                    <span class="on"></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+        </div>
+</body>
+
+    <script src="jquery-3.3.1/jquery-3.3.1.js"></script>
+    <script >
+        var index=0;
+        var domWidth =$("li").width();
+        
+    $(".right").click(throttle(function(){
+        goRight();
+    },500))
+        
+    $(".left").click(throttle(function(){
+        goleft();
+    },500))
+    //向右滚动
+    function goRight(){
+        if(index === $(".box li").length-1){
+            index = 0;
+            $(".box").css("left",0);
+        }
+        index ++;
+        move();
+    }
+    //向左滚动
+    function goleft(){
+        if(index===0){
+            index = $(".box li").length - 1;
+            $(".box").css("left",index*-590);
+        }
+        index--;
+        move();
+    }
+    // $(".s span").click(throttle(function(){
+    //     move();
+    //     follow();
+    // },500));
+    //下标跟随
+    function follow(){
+        $(".s span").eq(index).addClass("on").siblings().removeClass("on");
+        if(index ===  $(".s span").length){
+            $(".s span").eq(0).addClass("on").siblings().removeClass("on");
+        }
+    } 
+    //节流
+            function throttle(fn,time){
+            var beforeTime=0;
+            return function(){
+                var currTime= +new Date();
+                var args=arguments;
+                var sele=this;
+                if(currTime-beforeTime>=time){
+                    fn.apply(sele,args);
+                    beforeTime=currTime;
+                }
+            }
+        }
+    // 轮播图移动
+    function move(){
+        $(".box").animate({
+            "left": -590 * index  +"px",
+        },500);
+        follow();
+    }
+    </script>
+</html>
