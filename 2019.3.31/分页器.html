@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #page{
+            list-style: none;
+
+        }
+        #page li{
+            list-style: none;
+            float: left;
+        }
+        #page a{
+            padding:3px;
+            border:1px solid gray;
+            margin:2px;
+            color:black;
+            text-decoration:none
+        }
+        .active_page{
+            background:darkblue;
+            color:white !important;
+        }
+    </style>
+</head>
+<body>
+<ul class="page" id="page">
+
+
+    <li id="shouye" class="p-prev disabled">
+        <a href='javascript:indexpage(1);'>首 页</a>
+    </li>
+
+    <li id="shangyiye" class="p-prev disabled" >
+        <a href='javascript:indexpage(-1);'><i></i>上一页</a>
+    </li>
+    <li ><a id="one" href="javascript:void(0);"  >1</a></li>
+    <li><a id="two" href="javascript:void(0);" >2</a></li>
+    <li><a id="three" href="javascript:void(0);" >3</a></li>
+    <li class="more"><a id="five" href="javascript:void(0);" >...</a></li>
+    <li><a id="fore" href="javascript:void(0);" >13855</a></li>
+
+
+    <li class='p-next'>
+        <a href='javascript:indexpage(-3);' onclick="jumpToPage('2','/goods/ajaxqueryGoodsList.do.html','','goodsListContainer','13855', listPageCallback);">下一页<i></i></a>
+    </li>
+    <li id="weiye" class='p-next'>
+        <a href='javascript:void(0);' onclick="indexpage(0);">尾 页</a>
+    </li>
+
+    <li class="total">
+                        <span id="span_number">共13855页 到第<input type="text" id="input_number" class="page-txtbox" />页
+                            <input name="" value="确定" type="button" onclick="jumpToPage(jQuery('#input_number').val(),'/goods/ajaxqueryGoodsList.do.html','','goodsListContainer','13855', listPageCallback);" class="page-btn"/>
+                        </span>
+    </li>
+</ul>
+<input id="jiazai" type="hidden" ><!-- 当前页码 -->
+<input id="totalpage" type="hidden" ><!-- 总页码 -->
+<script src="jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        //每页显示的数目
+        var show_per_page = 5;
+        //获取content对象里面，数据的数量
+        var number_of_items = $('#content').children().size();
+        //计算页面显示的数量
+        var number_of_pages = Math.ceil(number_of_items/show_per_page);
+
+        //隐藏域默认值
+        $('#current_page').val(0);
+        $('#show_per_page').val(show_per_page);
+
+        var navigation_html = '<a class="previous_link" href="javascript:previous();">上一页</a>';
+        var current_link = 0;
+        while(number_of_pages > current_link){
+            navigation_html += '<a class="page_link" href="javascript:go_to_page(' + current_link +')" longdesc="' + current_link +'">'+ (current_link + 1) +'</a>';
+            current_link++;
+        }
+        navigation_html += '<a class="next_link" href="javascript:next();">下一页</a>';
+
+        $('#page_navigation').html(navigation_html);
+
+        //add active_page class to the first page link
+        $('#page_navigation .page_link:first').addClass('active_page');
+
+        //隐藏该对象下面的所有子元素
+        $('#content').children().css('display', 'none');
+
+        //显示第n（show_per_page）元素
+        $('#content').children().slice(0, show_per_page).css('display', 'block');
+
+    });
+
+    //上一页
+    function previous(){
+        new_page = parseInt($('#current_page').val()) - 1;
+        //if there is an item before the current active link run the function
+        if($('.active_page').prev('.page_link').length==true){
+            go_to_page(new_page);
+        }
+
+    }
+    //下一页
+    function next(){
+        new_page = parseInt($('#current_page').val()) + 1;
+        //if there is an item after the current active link run the function
+        if($('.active_page').next('.page_link').length==true){
+            go_to_page(new_page);
+        }
+
+    }
+    //跳转某一页
+    function go_to_page(page_num){
+        //get the number of items shown per page
+        var show_per_page = parseInt($('#show_per_page').val());
+
+        //get the element number where to start the slice from
+        start_from = page_num * show_per_page;
+
+        //get the element number where to end the slice
+        end_on = start_from + show_per_page;
+
+        //hide all children elements of content div, get specific items and show them
+        $('#content').children().css('display', 'none').slice(start_from, end_on).css('display', 'block');
+
+        /*get the page link that has longdesc attribute of the current page and add active_page class to it
+        and remove that class from previously active page link*/
+        $('.page_link[longdesc=' + page_num +']').addClass('active_page').siblings('.active_page').removeClass('active_page');
+
+        //update the current page input field
+        $('#current_page').val(page_num);
+    }
+
+</script>
+</body>
+</html>
