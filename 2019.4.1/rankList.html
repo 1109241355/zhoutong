@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无缝滚动-祝乾</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            background: #f0f3ef;
+        }
+
+        .leftGo {
+            position: relative;
+            float: left;
+            width: 800px;
+            height: 275px;
+        }
+
+
+        .leftGo ul {
+            left: -800px;
+            position: absolute;
+            width: 4000px;
+            background: #fff;
+            height: 275px;
+        }
+
+        .leftGo li {
+            width: 200px;
+            position: relative;
+            display: block;
+            height: 275px;
+            text-align: center;
+            float: left;
+        }
+
+        .leftGo li img {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            left: 50%;
+            margin-left: -70px;
+            top: 40px;
+        }
+
+        .leftGo p {
+            position: absolute;
+            top: 190px;
+            left: 0;
+            width: 160px;
+            padding: 0 15px;
+            line-height: 30px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .sk_item_price_new {
+            float: left;
+            width: 80px;
+            height: 20px;
+            text-align: center;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .sk_item_price_origin {
+            float: left;
+            width: 80px;
+            height: 20px;
+            background: #fff;
+            text-align: center;
+            color: #b7bcb8;
+            font-size: 12px;
+            text-decoration: line-through;
+        }
+
+        .nie {
+            position: absolute;
+            left: 15px;
+            top: 230px;
+            width: 160px;
+            height: 20px;
+            padding: 1px;
+            background: #e6382f;
+            line-height: 20px;
+        }
+
+        .mod_price i {
+            margin-right: 3px;
+            font-family: arial, sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            font-style: normal;
+        }
+
+        li:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 1px;
+            height: 275px;
+            background: #f0f0f0;
+        }
+
+        .leftGo > span {
+            position: absolute;
+            margin: -25px 0 0 0;
+            text-align: center;
+            line-height: 50px;
+            z-index: 199;
+            width: 50px;
+            height: 50px;
+            color: #00A782;
+            background: rgba(15, 15, 15, .5);
+        }
+
+        span:hover {
+            background: orangered;
+            color: yellow;
+        }
+
+
+        .prev {
+            border-bottom-right-radius: 30%;
+            border-top-right-radius: 30%;
+            top: 50%;
+        }
+
+        .next {
+            border-bottom-left-radius: 30%;
+            border-top-left-radius: 30%;
+            top: 50%;
+            right: 0;
+        }
+
+        .leftGo {
+            overflow: hidden;
+            margin: 200px 800px;
+        }
+    </style>
+</head>
+<body>
+<div class="leftGo">
+    <ul>
+        <li>
+            <img src="imges/a9.webp" alt="">
+            <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+            <div class="nie">
+                <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+            </div>
+        </li>
+        <li>
+            <img src="imges/a10.webp" alt="">
+            <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+            <div class="nie">
+                <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+            </div>
+        </li>
+        <li>
+            <img src="imges/a11.webp" alt="">
+            <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+            <div class="nie">
+                <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+            </div>
+        </li>
+        <li>
+            <img src="imges/a12.webp" alt="">
+            <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+            <div class="nie">
+                <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+            </div>
+        </li>
+        <li>
+            <img src="imges/a1.webp" alt="">
+            <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+            <div class="nie">
+                <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+            </div>
+        </li>
+        <li>
+            <img src="imges/a2.webp" alt="">
+            <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+            <div class="nie">
+                <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+            </div>
+        </li>
+        <li>
+            <img src="imges/a3.webp" alt="">
+            <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+            <div class="nie">
+                <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+            </div>
+        </li>
+        <li>
+            <img src="imges/a4.webp" alt="">
+            <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+            <div class="nie">
+                <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+            </div>
+        </li>
+        <li>
+            <img src="imges/a5.webp" alt="">
+            <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+            <div class="nie">
+                <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+            </div>
+        </li>
+        <li>
+            <img src="imges/a6.webp" alt="">
+            <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+            <div class="nie">
+                <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+            </div>
+        </li>
+        <li>
+            <img src="imges/a7.webp" alt="">
+            <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+            <div class="nie">
+                <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+            </div>
+        </li>
+        <li>
+            <img src="imges/a8.webp" alt="">
+            <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+            <div class="nie">
+                <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+            </div>
+        </li>
+        <li>
+            <img src="imges/a9.webp" alt="">
+            <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+            <div class="nie">
+                <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+            </div>
+        </li>
+        <li>
+            <img src="imges/a10.webp" alt="">
+            <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+            <div class="nie">
+                <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+            </div>
+        </li>
+        <li>
+            <img src="imges/a11.webp" alt="">
+            <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+            <div class="nie">
+                <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+            </div>
+        </li>
+        <li>
+            <img src="imges/a12.webp" alt="">
+            <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+            <div class="nie">
+                <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+            </div>
+        </li>
+        <li>
+            <img src="imges/a1.webp" alt="">
+            <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+            <div class="nie">
+                <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+            </div>
+        </li>
+        <li>
+            <img src="imges/a2.webp" alt="">
+            <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+            <div class="nie">
+                <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+            </div>
+        </li>
+        <li>
+            <img src="imges/a3.webp" alt="">
+            <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+            <div class="nie">
+                <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+            </div>
+        </li>
+        <li>
+            <img src="imges/a4.webp" alt="">
+            <p class="sk_item_name">飞利浦（PHILIPS）美容仪 眼周焕亮仪眼部按摩仪 护眼仪BSC301/05</p>
+            <div class="nie">
+                <span class="mod_price sk_item_price_new"><i>¥</i><span>659.00</span></span>
+                <span class="mod_price sk_item_price_origin"><i>¥</i><span>1099.00</span></span>
+            </div>
+        </li>
+    </ul>
+    <span class="prev"></span>
+    <span class="next"></span>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.js"></script>
+<script>
+    $(function () {
+		//设置索引值
+        let indexImg = 1;
+
+        /**
+         * 节流
+         * @param fn
+         * @param time
+         * @returns {Function}
+         */
+        function thorttol(fn, time) {
+            var value = 0;
+
+            return function () {
+                var self = this;
+                var ags = arguments;
+
+                var date = +new Date();
+                if (date - value >= time) {
+                    fn.apply(self, ags);
+                    value = date;
+                }
+            }
+        }
+		//给next绑定单击按钮
+        $('.next').click(thorttol(function () {
+			//索引自增
+            indexImg++;
+			//判断索引是否为3
+            if (indexImg > 3) {
+				//索引变为1
+                indexImg = 1;
+				//left偏移量变为0
+                $('.leftGo ul').css({left: 0})
+            }
+			//stop==>停止所有在指定元素上正在运行的动画。如果队列中有等待执行的动画(并且clearQueue没有设为true)，他们将被马上执行
+            $('.leftGo ul').stop().animate({left: -indexImg * 200 * 4}, 400);
+        }, 500));
+		//给prev绑定单击按钮
+        $('.prev').click(thorttol(function () {
+			//索引自减
+            indexImg--;
+			//判断索引
+            if (indexImg < 0) {
+				//设置索引等于2
+                indexImg = 2;
+				//设置相应的偏移量
+                $('.leftGo ul').css({left: -2400})
+            }
+            $('.leftGo ul').stop().animate({left: -indexImg * 200 * 4}, 400);
+        }, 500))
+    })
+</script>
+</body>
+</html>
