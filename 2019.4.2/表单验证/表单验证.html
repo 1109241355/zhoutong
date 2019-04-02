@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../public.css">
+    <style>
+        .wrap {
+            width: 500px;
+            height: 500px;
+            margin: 50px auto;
+            border: 1px solid red;
+            position: relative;
+        }
+
+        .box1 {
+            /* width: 250px; */
+            height: 30px;
+            /* float: left; */
+            margin: 50px 0 0 75px;
+        }
+
+        .ds {
+            position: absolute;
+            top: 170px;
+            left: 75px;
+            width: 200px;
+            display: flex;
+            align-items: center;
+           
+        }
+        .ds2{
+            display: none;
+        }
+        .mima {
+            margin-left: 20px;
+            width: 50px;
+            height: 20px;
+            
+        }
+        .mima1{
+            width: 50px;
+            height: 20px;
+            background: red;
+        }
+        .mina2 {
+            width: 50px;
+            height: 20px;
+            background: yellowgreen;
+        }
+
+        .mima3 {
+            width: 50px;
+            height: 20px;
+            background: orange;
+        }
+        .yzm{
+            display: inline-block;
+            font-size: 24px;
+
+        }
+
+        .sfom {
+            margin-left: 20px;
+            color: red;
+        }
+        .huan{
+            cursor: pointer;
+        }
+        .btn{
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            background: skyblue;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+            border: none;
+        }
+        .res{
+            margin-left: 50px;
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            background: skyblue;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <div class="wrap">
+            <div class="box1">
+                <label for="">账户:</label> <input class="inp1" type="text" placeholder="请输入账号"> <label class="sfom"
+                    for=""></label>
+            </div>
+            <div class="box1">
+                <label for="">密码:</label> <input class="inp2" type="password" placeholder="请输入账号">
+            </div>
+            <div class=" ds ds2">
+                <label for="">密码强度</label>
+                <div class="mima">
+                    <div class="mima1">
+
+                    </div>
+                </div>
+            </div>
+            <div class="box1">
+                <label for="">验证码</label>
+                <div class="yzm"></div>
+            </div>
+            <div class="box1">
+                <input class="inp3" type="text" placeholder="验证码"><label   class="huan" for="">换一张</label>
+            </div>
+            <div class="box1">
+                <button type="submit" class="btn">登录</button>
+                <button type="reset" class="res">重置</button>
+            </div>
+        </div>
+    </form>
+</body>
+
+<script src="../jquery-3.3.1/jquery-3.3.1.js"></script>
+<script>
+    var patrn = /^[0-9]+$/;
+    var patrn2 = /^[A-Za-z]+$/;
+    var patrn4 = /^[A-Za-z0-9]+$/;
+    var patrn3=/[^~\x22]+$/;//特殊字符
+    var sui="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+   
+    $(".inp1").blur(function () {
+        console.log($(".inp1").val());
+        if ($(".inp1").val().length > 6 && $(".inp1").val().length < 16) {
+            $(".sfom").html("");
+        } else {
+            $(".sfom").html("账号格式不正确");
+        }
+    });
+    $(".inp2").blur(function(){
+        var s=$(".inp2").val();
+        console.log(s);
+        if(patrn.test(s)||patrn2.test(s)){
+            $(".ds").removeClass("ds2");
+            $(".mima div").removeClass().addClass("mima1");
+        }else if(patrn4.test(s)){
+            $(".mima div").removeClass().addClass("mina2");
+        }else if(patrn3.test(s) ){
+            $(".mima div").removeClass().addClass("mima3");
+        }else{
+            $(".ds").addClass("ds2");
+        }
+    });
+    function fns(){
+        var s="";
+        for(var i=0 ;i<4;i++){
+            var str=Math.floor(Math.random()*36);
+            s+=sui.substring(str,str+1);
+        }
+        
+
+         return s;
+    }
+    $(".yzm").html(fns());
+    $(".huan").click(function(){
+        $(".yzm").html(fns());
+    });
+    $(".btn").click(function(){
+        if( $(".yzm").html()==$(".inp3").val()){
+            window.open('https://www.baidu.com');
+        }else{
+            alert("密码或验证码错误");
+        }
+    })
+</script>
+
+</html>
