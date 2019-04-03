@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽</title>
+    <style>
+        .wrap {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            background: skyblue;
+            color: #fff;
+        }
+
+        .box:active {
+            background: orangered;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="box">按住鼠标移动当前div</div>
+    </div>
+    <script src="../jquery-3.3.1/jquery-3.3.1.js"></script>
+    <script>
+        // move(".wrap",".box");
+        // function move(wrap,box){
+        //     $(box).mousedown(function(e){
+        //         var stype=true;
+        //         var x=e.pageX-$(wrap).offset().left;
+        //         var y=e.pageY-$(wrap).offset().top;
+        //       $(document).mousemove(function(e){
+        //           if(stype){
+        //               var obj=$(wrap);
+        //               obj.css({
+        //                   "left":e.pageX-x,
+        //                   "top":e.pageY-y
+        //               });
+        //           }
+        //       }).mouseup(function(){
+        //           stype=false;
+        //       })  
+        //     })
+        // }
+        var x = 0;
+        var y = 0;
+        $(".wrap").mousedown(function (e) {
+            x = e.pageX - $(this).offset().left;
+            y = e.pageY - $(this).offset().top;
+            $(".box").html("松开我");
+            $(document).mousemove(function (e) {
+                $(".wrap").css({
+                    left: e.pageX - x,
+                    top: e.pageY - y
+                })
+
+            });
+            $(document).mouseup(function (e) {
+                $(this).off('mousedown');
+                $(this).off('mousemove');
+                $(".box").html("按住鼠标移动当前div");
+            })
+            return false;
+        });
+    </script>
+</body>
+
+</html>

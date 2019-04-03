@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>分页器</title>
+    <link rel="stylesheet" href="../public.css">
+    <style>
+        .da {}
+
+        .wrap {
+            width: 570px;
+            margin: 100px auto;
+        }
+
+        .box {
+            float: left;
+        }
+
+        .box a {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background: skyblue;
+            color: #fff;
+            margin: 0 10px;
+
+        }
+
+        .left,
+        .right,
+        .shou,
+        .wei {
+            float: left;
+            padding: 0 10px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background: skyblue;
+            color: #fff;
+            margin: 0 10px;
+        }
+
+        .clear::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .box .act {
+            background: orangered;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="da">
+        <div class="wrap clear">
+            <a href="javascript:;" class="shou">首页</a>
+            <a href="javascript:;" class="left">上一页</a>
+            <div class="box">
+                <!-- <a href="javascript:;">1</a>
+                        <a href="javascript:;">2</a>
+                        <a href="javascript:;">3</a>
+                        <a href="javascript:;">4</a>
+                        <a href="javascript:;">5</a> -->
+            </div>
+            <a href="javascript:;" class="right">下一页</a>
+            <a href="javascript:;" class="wei">尾页</a>
+        </div>
+    </div>
+
+
+
+    <script src="../jquery-3.3.1/jquery-3.3.1.js"></script>
+    <script>
+        var curpont = 1; //起始页码
+        var surpont = 10;//总页码数
+        move(curpont);
+        
+
+        //封装方法
+        function move(num) {
+            //清空
+            $(".box").html("");
+            //边界判断
+            if (num - 2 < 3) {
+                num = 3;
+            } else if (num + 2 > 8) {
+                num = 8;
+            }
+
+            var starPage = num - 2;
+            var endPage = num + 2;
+            //打印数量
+            for (var i = starPage; i <= endPage; i++) {
+                $(".box").append("<a href='javascript:;'>" + i + "");
+            }
+            //控制激活状态
+            $(".box a").each(function (index, item) {
+                if ($(this).text() == curpont) {
+                    $(this).addClass("act").siblings().removeClass("act");
+                }
+            });
+        }
+        //页码跳转
+        $(".box").click(function(event){
+            var aDom=event.target;
+            curpont=parseInt(aDom.innerText);
+            move(curpont);
+            
+        })
+        //首页
+        $(".shou").click(function(){
+            curpont=1;
+            move(curpont);
+        })
+        //上一页
+        $(".left").click(function () {
+            var n = curpont - 1;
+            curpont = n < 1 ? n = 1 : n;
+            move(curpont);
+        });
+        //下一页
+        $(".right").click(function () {
+            var n = curpont + 1;
+            curpont = n > surpont ? n = surpont : n;
+            move(curpont);
+        });
+        //尾页
+        $(".wei").click(function(){
+            curpont=surpont;
+            move(curpont);
+        })
+    </script>
+</body>
+
+</html>
